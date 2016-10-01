@@ -94,7 +94,7 @@ int LoadFileToStek(Stek *& Stringns, string name, string road)
 
 			isFirst = true;
 
-		//	delete[] arr;
+			//delete[] arr;
 
 			n = MAX_SIZE;
 
@@ -107,7 +107,7 @@ int LoadFileToStek(Stek *& Stringns, string name, string road)
 
 			n = n * 2;
 
-			delete[] arr;
+			//delete[] arr;
 
 			arr = new char[n];
 
@@ -122,7 +122,6 @@ int LoadFileToStek(Stek *& Stringns, string name, string road)
 				strcat(arr, buffer);
 			}
 		}
-		
 	} 
 
 	file.close();
@@ -153,12 +152,13 @@ void Renumber(Stek *&Strings, int count)
 	count = 0;
 }
 
-void Purge(Stek *& Stringns)// Purge all stack
+void Purge(Stek *& Strings)// Purge all stack
 {
-	while (Stringns != NULL)
+	while (Strings != NULL)
 	{
-		pop(Stringns);//extracting top element
+		pop(Strings);//extracting top element
 	}
+	delete Strings;
 }
 
 void LinePrint(void)

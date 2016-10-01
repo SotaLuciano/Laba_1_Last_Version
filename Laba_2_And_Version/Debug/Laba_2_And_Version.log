@@ -1,2 +1,4 @@
-﻿  Laba_2_And_Version.vcxproj -> D:\Visual Studio C++ Projects\Laba_2_And_Version\Debug\Laba_2_And_Version.exe
+﻿  Source.cpp
+d:\visual studio c++ projects\laba_2_and_version\laba_2_and_version\source.cpp(44): warning C4101: 'k': unreferenced local variable
+  Laba_2_And_Version.vcxproj -> D:\Visual Studio C++ Projects\Laba_2_And_Version\Debug\Laba_2_And_Version.exe
   Laba_2_And_Version.vcxproj -> D:\Visual Studio C++ Projects\Laba_2_And_Version\Debug\Laba_2_And_Version.pdb (Full PDB)
