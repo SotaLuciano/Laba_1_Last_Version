@@ -37,30 +37,34 @@ void pop(Stek *& Stringns)				//Extract element of stack
 	return;
 }
 
-int LoadFileToStek(Stek *& Stringns, string name, string road)
+int LoadFileToStek(Stek *& Strings, string name, string road)
 {
-	Stringns = NULL;
-	int i = 0;	//counter
-	char k;		// for reading
+
 	fstream file(road + name);
-	const int MAX_SIZE = 5;
+
+	const int MAX_SIZE = 10;
 
 	char *buffer = new char[MAX_SIZE];
 
 	char *arr = new char[MAX_SIZE];
 
 	int n = MAX_SIZE;
+
 	int count = 0;
+
 	bool isFirst = true;
+
 	char k1;
-	while(file.get(k1))
+
+	while (file.get(k1))
 	{
-		if (file.eof())
-			break;
-		//file.getline(arr, MAX_SIZE);
+		/*if (file.eof())
+		break;*/
+
 		file.seekg(-1, ios::cur);
-		
-		file >> buffer;
+
+		file.getline(buffer, MAX_SIZE, '\n');
+
 		if (isFirst)
 		{
 			strcpy(arr, buffer);
@@ -68,11 +72,19 @@ int LoadFileToStek(Stek *& Stringns, string name, string road)
 		}
 
 		char k;
-		file.get(k);
-		file.seekg(-1, ios::cur);
-		if (k == '\n' || !file.good())
-		{
 
+		file.clear();
+
+		file.seekg(-1, ios::cur);
+
+		file.get(k);
+		if (!file.get(k1))
+		{
+			k = '\n';
+		}
+		file.seekg(-1, ios::cur);
+		if (k == '\n' || !file.good() || k == '\n')
+		{
 
 			if (isFirst)
 			{
@@ -83,18 +95,18 @@ int LoadFileToStek(Stek *& Stringns, string name, string road)
 				strcat(arr, buffer);
 			}
 
-			if (!file.good())
-			{
-				strcat(arr, "\n");
-			}
 
-			push(arr, Stringns);
+
+			strcat(arr, "\n");
+
+
+			push(arr, Strings);
 
 			count++;
 
 			isFirst = true;
 
-			//delete[] arr;
+			delete[] arr;
 
 			n = MAX_SIZE;
 
@@ -107,7 +119,7 @@ int LoadFileToStek(Stek *& Stringns, string name, string road)
 
 			n = n * 2;
 
-			//delete[] arr;
+			delete[] arr;
 
 			arr = new char[n];
 
@@ -121,8 +133,10 @@ int LoadFileToStek(Stek *& Stringns, string name, string road)
 			{
 				strcat(arr, buffer);
 			}
+
 		}
-	} 
+
+	}
 
 	file.close();
 	return count;
